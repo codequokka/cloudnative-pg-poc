@@ -1,0 +1,25 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: example
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: cluster-example
+  namespace: example
+spec:
+  instances: 3
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.5@sha256:2ec17b4c713d5293cb869f8d7b8aca2a9096ad6a775a77b14c35434e598ac210
+  storage:
+    size: 1Gi
+  postgresql:
+    synchronous:
+      method: any
+      number: 1
+      dataDurability: required
+  affinity:
+    enablePodAntiAffinity: true
+    topologyKey: kubernetes.io/hostname
+    podAntiAffinityType: preferred # requiredにしたほうがよいかも

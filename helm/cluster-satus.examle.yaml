@@ -1,0 +1,185 @@
+Name:         cluster-example
+Namespace:    example
+Labels:       <none>
+Annotations:  <none>
+API Version:  postgresql.cnpg.io/v1
+Kind:         Cluster
+Metadata:
+  Creation Timestamp:  2025-05-28T20:29:25Z
+  Generation:          1
+  Resource Version:    3446
+  UID:                 4521cf01-be5f-498c-90c1-adb979a4efb5
+Spec:
+  Affinity:
+    Pod Anti Affinity Type:  preferred
+  Bootstrap:
+    Initdb:
+      Database:             app
+      Encoding:             UTF8
+      Locale C Type:        C
+      Locale Collate:       C
+      Owner:                app
+  Enable PDB:               true
+  Enable Superuser Access:  false
+  Failover Delay:           0
+  Image Name:               ghcr.io/cloudnative-pg/postgresql:17.5
+  Instances:                3
+  Log Level:                info
+  Max Sync Replicas:        0
+  Min Sync Replicas:        0
+  Monitoring:
+    Custom Queries Config Map:
+      Key:                    queries
+      Name:                   cnpg-default-monitoring
+    Disable Default Queries:  false
+    Enable Pod Monitor:       false
+  Postgres GID:               26
+  Postgres UID:               26
+  Postgresql:
+    Parameters:
+      archive_mode:                on
+      archive_timeout:             5min
+      dynamic_shared_memory_type:  posix
+      full_page_writes:            on
+      log_destination:             csvlog
+      log_directory:               /controller/log
+      log_filename:                postgres
+      log_rotation_age:            0
+      log_rotation_size:           0
+      log_truncate_on_rotation:    false
+      logging_collector:           on
+      max_parallel_workers:        32
+      max_replication_slots:       32
+      max_worker_processes:        32
+      shared_memory_type:          mmap
+      shared_preload_libraries:    
+      ssl_max_protocol_version:    TLSv1.3
+      ssl_min_protocol_version:    TLSv1.3
+      wal_keep_size:               512MB
+      wal_level:                   logical
+      wal_log_hints:               on
+      wal_receiver_timeout:        5s
+      wal_sender_timeout:          5s
+    Sync Replica Election Constraint:
+      Enabled:              false
+  Primary Update Method:    restart
+  Primary Update Strategy:  unsupervised
+  Replication Slots:
+    High Availability:
+      Enabled:      true
+      Slot Prefix:  _cnpg_
+    Synchronize Replicas:
+      Enabled:        true
+    Update Interval:  30
+  Resources:
+  Smart Shutdown Timeout:  180
+  Start Delay:             3600
+  Stop Delay:              1800
+  Storage:
+    Resize In Use Volumes:  true
+    Size:                   1Gi
+  Switchover Delay:         3600
+Status:
+  Available Architectures:
+    Go Arch:  amd64
+    Hash:     024c5162e1dee336b21121d781397b347d04939a857d9d8a47664d1796e8b7c9
+    Go Arch:  arm64
+    Hash:     63f3a3fbe19b8fe1c26a0e516ecb965c3412e390729a02706825399f585d9298
+  Certificates:
+    Client CA Secret:  cluster-example-ca
+    Expirations:
+      Cluster - Example - Ca:           2025-08-26 20:24:25 +0000 UTC
+      Cluster - Example - Replication:  2025-08-26 20:24:25 +0000 UTC
+      Cluster - Example - Server:       2025-08-26 20:24:25 +0000 UTC
+    Replication TLS Secret:             cluster-example-replication
+    Server Alt DNS Names:
+      cluster-example-rw
+      cluster-example-rw.example
+      cluster-example-rw.example.svc
+      cluster-example-rw.example.svc.cluster.local
+      cluster-example-r
+      cluster-example-r.example
+      cluster-example-r.example.svc
+      cluster-example-r.example.svc.cluster.local
+      cluster-example-ro
+      cluster-example-ro.example
+      cluster-example-ro.example.svc
+      cluster-example-ro.example.svc.cluster.local
+    Server CA Secret:             cluster-example-ca
+    Server TLS Secret:            cluster-example-server
+  Cloud Native PG Commit Hash:    1535f3c17
+  Cloud Native PG Operator Hash:  024c5162e1dee336b21121d781397b347d04939a857d9d8a47664d1796e8b7c9
+  Conditions:
+    Last Transition Time:  2025-05-28T20:35:18Z
+    Message:               Cluster is Ready
+    Reason:                ClusterIsReady
+    Status:                True
+    Type:                  Ready
+    Last Transition Time:  2025-05-28T20:31:17Z
+    Message:               Continuous archiving is working
+    Reason:                ContinuousArchivingSuccess
+    Status:                True
+    Type:                  ContinuousArchiving
+  Config Map Resource Version:
+    Metrics:
+      Cnpg - Default - Monitoring:  2377
+  Current Primary:                  cluster-example-1
+  Current Primary Timestamp:        2025-05-28T20:31:16.970395Z
+  Healthy PVC:
+    cluster-example-1
+    cluster-example-2
+    cluster-example-3
+  Image:  ghcr.io/cloudnative-pg/postgresql:17.5
+  Instance Names:
+    cluster-example-1
+    cluster-example-2
+    cluster-example-3
+  Instances:  3
+  Instances Reported State:
+    cluster-example-1:
+      Ip:            10.244.2.4
+      Is Primary:    true
+      Time Line ID:  1
+    cluster-example-2:
+      Ip:            10.244.3.4
+      Is Primary:    false
+      Time Line ID:  1
+    cluster-example-3:
+      Ip:            10.244.1.5
+      Is Primary:    false
+      Time Line ID:  1
+  Instances Status:
+    Healthy:
+      cluster-example-1
+      cluster-example-2
+      cluster-example-3
+  Latest Generated Node:  3
+  Managed Roles Status:
+  Pg Data Image Info:
+    Image:          ghcr.io/cloudnative-pg/postgresql:17.5
+    Major Version:  17
+  Phase:            Cluster in healthy state
+  Pooler Integrations:
+    Pg Bouncer Integration:
+  Pvc Count:        3
+  Read Service:     cluster-example-r
+  Ready Instances:  3
+  Secrets Resource Version:
+    Application Secret Version:  2344
+    Client Ca Secret Version:    2341
+    Replication Secret Version:  2343
+    Server Ca Secret Version:    2341
+    Server Secret Version:       2342
+  Switch Replica Cluster Status:
+  Target Primary:            cluster-example-1
+  Target Primary Timestamp:  2025-05-28T20:29:25.965912Z
+  Timeline ID:               1
+  Topology:
+    Instances:
+      cluster-example-1:
+      cluster-example-2:
+      cluster-example-3:
+    Nodes Used:              3
+    Successfully Extracted:  true
+  Write Service:             cluster-example-rw
+Events:                      <none>
